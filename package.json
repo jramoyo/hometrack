@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests"
+  },
+  "engines": {
+    "node": "8.4.0"
   },
   "repository": {
     "type": "git",
@@ -18,6 +21,7 @@
   "homepage": "https://github.com/jramoyo/hometrack#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "err-code": "^1.1.2",
     "express": "^4.16.0"
   },
   "devDependencies": {
