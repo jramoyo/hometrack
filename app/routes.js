@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const router = express.Router()
 
-const errorcode = require('err-code')
+const errorCode = require('err-code')
 
 const Service = require('./service')
 const service = new Service()
@@ -21,9 +21,9 @@ router.use((err, req, res, next) => {
   if (!err) next()
 
   if (err instanceof SyntaxError) { // thrown by body-parser
-    res.status(400).json(error('Could not decode request: JSON parsing failed'))
+    res.status(400).json(errorMessage('Could not decode request: JSON parsing failed'))
   } else if (err.code === '400') {
-    res.status(400).json(error(err.message))
+    res.status(400).json(errorMessage(err.message))
   } else {
     next(err)
   }
@@ -31,7 +31,7 @@ router.use((err, req, res, next) => {
 
 const validate = (payload) => {
   if (!payload) {
-    throw errorcode('Request payload is missing', '400')
+    throw errorCode('Request payload is missing', '400')
   }
 
   const everyAddress = payload.reduce((result, value) => {
@@ -39,11 +39,11 @@ const validate = (payload) => {
   }, true)
 
   if (!everyAddress) {
-    throw errorcode('Request payload contains an item without an address', '400')
+    throw errorCode('Request payload contains an item without an address', '400')
   }
 }
 
-const error = (message) => {
+const errorMessage = (message) => {
   return { error: message }
 }
 
