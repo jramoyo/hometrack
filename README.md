@@ -1,4 +1,5 @@
 # hometrack
+[![Build Status](https://travis-ci.org/jramoyo/hometrack.svg?branch=master)](https://travis-ci.org/jramoyo/hometrack)
 
 https://github.com/Hometrack/codetest
 
